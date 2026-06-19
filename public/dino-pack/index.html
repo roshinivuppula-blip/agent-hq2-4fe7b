@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dinosaur Discovery Activity Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: white; font-family: 'Nunito', Arial, sans-serif; }
+
+/* ── PAGE SHELL ── */
+.page {
+  width: 210mm;
+  height: 297mm;
+  padding: 12mm 14mm;
+  background: white;
+  page-break-after: always;
+  break-after: page;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── COLORS ── */
+:root {
+  --green:  #2d7a4f;
+  --green2: #e6f4ec;
+  --yellow: #f4c430;
+  --ylight: #fffde7;
+  --orange: #c06028;
+  --olight: #fff3e0;
+  --brown:  #8b5e3c;
+  --gray:   #555;
+  --border: #ddd;
+}
+
+/* ── HEADER ── */
+.ph {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--green);
+  padding-bottom: 3mm;
+  margin-bottom: 5mm;
+  flex-shrink: 0;
+}
+.ph-title { font-family:'Fredoka One',cursive; font-size:13pt; color:var(--green); }
+.ph-right { display:flex; align-items:center; gap:2mm; }
+.ph-num { font-size:11pt; font-weight:800; color:var(--gray); }
+.tier-img { width:14mm; height:14mm; object-fit:contain; }
+
+/* ── INSTRUCTION BOX ── */
+.ibox {
+  background:var(--ylight); border:2px solid var(--yellow);
+  border-radius:8px; padding:5px 10px; margin-bottom:5mm;
+  font-size:9.5pt; color:#333; flex-shrink:0;
+}
+.ibox b { color:var(--orange); }
+
+.on-inst {
+  font-family:'Fredoka One',cursive; font-size:13pt;
+  color:var(--green); text-align:center; margin-bottom:4mm;
+}
+
+/* ── COVER PAGE ── */
+.cover-page {
+  padding: 0; background: #e8f7f0;
+  justify-content: flex-end; align-items: center;
+}
+.cover-bg {
+  position:absolute; inset:0;
+  background-image: url('images/landscape.jpg');
+  background-size:cover; background-position:center bottom;
+  opacity:0.55;
+}
+.cover-content {
+  position:relative; z-index:2;
+  display:flex; flex-direction:column; align-items:center;
+  width:100%; padding:0 14mm 14mm;
+}
+.cover-top {
+  display:flex; flex-direction:column; align-items:center;
+  background:rgba(255,255,255,0.88); border-radius:20px;
+  padding:14mm 18mm 10mm; margin-bottom:6mm;
+  border:4px solid var(--green);
+}
+.cover-dino {
+  position:relative; z-index:2;
+  display:flex; justify-content:center; margin-bottom:4mm;
+}
+.cover-dino img { height:72mm; object-fit:contain; }
+.cover-title {
+  font-family:'Fredoka One',cursive;
+  font-size:38pt; color:var(--green);
+  text-align:center; line-height:1.1;
+  text-shadow:2px 2px 0 rgba(255,255,255,0.9);
+}
+.cover-sub {
+  font-family:'Fredoka One',cursive;
+  font-size:15pt; color:var(--orange);
+  text-align:center; margin-top:4mm;
+}
+.cover-badge {
+  background:var(--yellow); border-radius:30px;
+  padding:6px 22px;
+  font-family:'Fredoka One',cursive; font-size:13pt; color:#333;
+  border:3px solid var(--orange);
+}
+
+/* ── WELCOME PAGE ── */
+.welcome-box {
+  background:var(--green2); border:3px solid var(--green);
+  border-radius:14px; padding:10mm; margin-bottom:6mm;
+  font-size:11pt; line-height:1.7; color:#222;
+}
+.icon-legend {
+  display:flex; gap:8mm; justify-content:center; margin-top:5mm;
+}
+.legend-item {
+  display:flex; align-items:center; gap:3mm;
+  background:white; border:2px solid var(--border);
+  border-radius:10px; padding:4mm 6mm;
+}
+.legend-item img { width:12mm; height:12mm; object-fit:contain; }
+.legend-text { font-size:11pt; font-weight:700; color:var(--gray); }
+.welcome-dino { text-align:center; margin-top:5mm; }
+.welcome-dino img { height:50mm; object-fit:contain; }
+
+/* ── COUNTING ── */
+.nest-row {
+  display:flex; justify-content:space-around;
+  align-items:flex-start; gap:4mm;
+  margin-top:4mm;
+}
+.nest-col {
+  display:flex; flex-direction:column; align-items:center; gap:3mm;
+  flex: 0 0 28%; max-width:28%;
+}
+.nest-bowl {
+  width:100%; min-height:50mm; padding:5mm;
+  background:var(--olight); border:3px dashed var(--brown);
+  border-radius:30% 30% 15% 15%;
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:center; gap:3mm;
+}
+.egg-sm { width:13mm; height:16mm; object-fit:contain; border:1.5px solid #d4a87a; border-radius:50%; background:#fff8f0; }
+.egg-sm { width:11mm; height:14mm; object-fit:contain; }
+.num-row { display:flex; gap:2mm; }
+.num-circ {
+  width:9mm; height:9mm; border:2.5px solid var(--green);
+  border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:12pt; font-weight:800; color:var(--green);
+}
+.fp-row { display:flex; align-items:center; gap:2mm; margin-bottom:4mm; }
+.fp-sm { width:9mm; height:11mm; object-fit:contain; }
+.write-box {
+  width:14mm; height:14mm; border:2.5px solid var(--green);
+  border-radius:6px; margin-left:3mm;
+  display:inline-block; vertical-align:middle;
+}
+
+/* ── MATCHING ── */
+.shadow-grid {
+  display:flex; justify-content:space-between; flex:1; gap:5mm;
+}
+.shadow-col {
+  display:flex; flex-direction:column; gap:4mm; flex:1;
+  align-items:center;
+}
+.shadow-col-label {
+  font-family:'Fredoka One',cursive; font-size:12pt;
+  color:var(--green); text-align:center; margin-bottom:2mm;
+}
+.dino-card {
+  background:var(--green2); border:2px solid var(--green);
+  border-radius:10px; padding:3mm;
+  display:flex; align-items:center; justify-content:center;
+  width:38mm; height:28mm;
+}
+.dino-card img { max-width:100%; max-height:100%; object-fit:contain; }
+.shadow-card {
+  background:#f0f0f0; border:2px solid #aaa;
+  border-radius:10px; padding:3mm;
+  display:flex; align-items:center; justify-content:center;
+  width:38mm; height:28mm;
+}
+.shadow-card img { max-width:100%; max-height:100%; object-fit:contain; filter:brightness(0) saturate(0); }
+
+/* sort dinosaurs */
+.sort-dinos { display:flex; justify-content:center; gap:5mm; margin-bottom:5mm; }
+.sort-dino { display:flex; flex-direction:column; align-items:center; gap:1mm; }
+.sort-dino img { width:20mm; height:20mm; object-fit:contain; }
+.sort-dino span { font-size:8pt; font-weight:700; color:var(--gray); }
+.sort-cats { display:flex; justify-content:space-around; gap:4mm; }
+.sort-cat {
+  flex:1; min-height:35mm; border:3px solid var(--green);
+  border-radius:10px; padding:3mm;
+  display:flex; flex-direction:column; align-items:center; gap:2mm;
+}
+.sort-cat-title {
+  font-family:'Fredoka One',cursive; font-size:12pt; color:var(--green);
+}
+.sort-cat-icon { font-size:20pt; }
+.sort-cat-inner { flex:1; width:100%; border:2px dashed var(--border); border-radius:8px; }
+
+/* ── MAZES ── */
+.maze-wrap { flex:1; display:flex; justify-content:center; align-items:center; position:relative; }
+.maze-svg { border:4px solid var(--green); border-radius:10px; display:block; }
+.maze-label {
+  font-family:'Fredoka One',cursive; font-size:10pt; color:var(--green);
+  text-align:center;
+}
+.maze-ends { display:flex; justify-content:space-between; margin-top:2mm; }
+
+/* ── COLOR BY SHAPE / NUMBER ── */
+.color-key {
+  display:flex; justify-content:center; gap:8mm;
+  background:var(--green2); border:2px solid var(--green);
+  border-radius:10px; padding:4mm 8mm; margin-bottom:5mm;
+}
+.key-item { display:flex; align-items:center; gap:2mm; font-size:11pt; font-weight:700; color:var(--gray); }
+.key-swatch { width:8mm; height:8mm; border:2px solid #333; border-radius:3px; display:inline-block; }
+
+/* ── SPOT THE DIFFERENCE ── */
+.std-wrap { display:flex; flex-direction:column; gap:4mm; flex:1; }
+.std-pair { display:flex; gap:6mm; flex:1; justify-content:center; }
+.std-scene {
+  position:relative; flex:1; max-width:85mm;
+  border:3px solid var(--green); border-radius:10px; overflow:hidden;
+  min-height:55mm;
+}
+.std-bg { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.std-dino { position:absolute; object-fit:contain; }
+.std-label {
+  position:absolute; bottom:2mm; left:50%; transform:translateX(-50%);
+  background:rgba(255,255,255,0.85); border-radius:20px;
+  padding:1mm 4mm; font-size:8pt; font-weight:700; color:var(--green);
+}
+.diff-count-box {
+  display:flex; justify-content:center; gap:6mm; margin-top:3mm; flex-shrink:0;
+}
+.diff-circ {
+  width:10mm; height:10mm; border:2.5px solid var(--orange);
+  border-radius:50%;
+}
+
+/* ── TRACING ── */
+.trace-wrap { flex:1; display:flex; justify-content:center; align-items:center; position:relative; }
+
+/* ── LETTER TRACING ── */
+.letter-section { flex:1; display:flex; flex-direction:column; align-items:center; gap:5mm; }
+.letter-pair { display:flex; gap:8mm; align-items:center; }
+.word-boxes { display:flex; gap:4mm; align-items:center; justify-content:center; }
+.letter-cell {
+  width:28mm; height:32mm; border:2.5px solid var(--border);
+  border-radius:8px; display:flex; align-items:center; justify-content:center;
+  background:var(--green2);
+}
+
+/* ── FREE COLORING ── */
+.color-scene {
+  flex:1; position:relative; border:4px solid var(--green);
+  border-radius:14px; overflow:hidden;
+}
+.color-scene-bg { width:100%; height:100%; object-fit:cover; opacity:0.35; }
+.color-scene-dino { position:absolute; object-fit:contain; filter:grayscale(1) contrast(1.4); }
+
+/* ── BIG/SMALL ── */
+.bigsmall-grid {
+  display:flex; flex-wrap:wrap; gap:4mm; flex:1;
+  justify-content:center; align-items:flex-end; padding-top:2mm;
+}
+.bs-pair {
+  display:flex; flex-direction:column; align-items:center;
+  width:43%; gap:1mm;
+}
+.bs-inner { display:flex; gap:3mm; align-items:flex-end; justify-content:center; }
+.bs-dino img { object-fit:contain; }
+
+/* ── PATTERNS ── */
+.pattern-rows { flex:1; display:flex; flex-direction:column; justify-content:space-evenly; }
+.pattern-row { display:flex; align-items:center; gap:3mm; padding:2mm 4mm; }
+.pat-cell {
+  width:18mm; height:18mm; border:2px dashed var(--border);
+  border-radius:6px; display:flex; align-items:center; justify-content:center;
+}
+.pat-cell img { width:14mm; height:14mm; object-fit:contain; }
+.pat-answer {
+  width:20mm; height:20mm; border:3px solid var(--orange);
+  border-radius:8px; background:var(--olight);
+  display:flex; align-items:center; justify-content:center;
+  font-size:8pt; color:var(--orange); font-weight:700;
+}
+
+/* ── MY DINO NAME ── */
+.egg-page { flex:1; display:flex; flex-direction:column; align-items:center; gap:5mm; }
+.egg-name-wrap { position:relative; display:inline-block; }
+.egg-name-wrap img { height:70mm; object-fit:contain; }
+.name-line {
+  position:absolute; bottom:15mm; left:50%; transform:translateX(-50%);
+  width:55mm; border-bottom:2.5px solid var(--brown);
+  font-size:10pt; color:var(--brown); text-align:center;
+  padding-bottom:1mm;
+}
+
+/* ── SEEK & FIND ── */
+.seek-scene {
+  flex:1; position:relative; border:4px solid var(--green);
+  border-radius:14px; overflow:hidden; min-height:100mm;
+}
+.seek-bg { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.seek-dino {
+  position:absolute; object-fit:contain;
+  filter:brightness(0) saturate(0); opacity:0.7;
+}
+
+/* ── CERTIFICATE ── */
+.cert-outer {
+  flex:1; border:6px solid var(--green); border-radius:16px;
+  padding:8mm; display:flex; flex-direction:column; align-items:center;
+  background:linear-gradient(135deg, #f0fdf4 0%, #fffde7 100%);
+  position:relative;
+}
+.cert-inner {
+  width:100%; height:100%; border:3px dashed var(--yellow);
+  border-radius:12px; display:flex; flex-direction:column;
+  align-items:center; padding:6mm; gap:4mm;
+}
+.cert-title { font-family:'Fredoka One',cursive; font-size:22pt; color:var(--green); }
+.cert-subtitle { font-family:'Fredoka One',cursive; font-size:12pt; color:var(--orange); }
+.cert-awarded { font-size:13pt; color:var(--gray); font-weight:600; text-align:center; line-height:1.6; }
+.cert-name-line {
+  width:80mm; border-bottom:3px solid var(--brown);
+  margin:2mm 0; height:10mm;
+}
+.cert-star { font-size:28pt; line-height:1; }
+.cert-dino img { height:38mm; object-fit:contain; }
+.cert-sig {
+  display:flex; flex-direction:column; align-items:center;
+  margin-top:2mm;
+}
+.sig-line { width:55mm; border-bottom:2px solid var(--gray); margin-bottom:1mm; }
+.sig-label { font-size:8pt; color:var(--gray); }
+.cert-stars { display:flex; gap:2mm; }
+
+/* ── SECTION DIVIDER ── */
+.section-tag {
+  display:inline-block; background:var(--green); color:white;
+  font-family:'Fredoka One',cursive; font-size:10pt;
+  border-radius:20px; padding:2px 10px; margin-bottom:4mm;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ PAGE 1 — COVER ═══════════════════════════════ -->
+<div class="page cover-page">
+  <div class="cover-bg"></div>
+  <div class="cover-content">
+    <div class="cover-top">
+      <div class="cover-dino">
+        <img src="images/brachiosaurus-standing.jpg" alt="Dinosaur">
+      </div>
+      <div class="cover-title">Dinosaur<br>Discovery</div>
+      <div class="cover-sub">Activity Pack — 20 Fun Activities for Ages 3–5</div>
+    </div>
+    <div class="cover-badge">Ages 3–5 &nbsp;|&nbsp; 20 Activities</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 2 — WELCOME ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right"><span class="ph-num">Page 2</span></div>
+  </div>
+
+  <h2 style="font-family:'Fredoka One',cursive;color:var(--green);font-size:18pt;margin-bottom:5mm;text-align:center;">
+    Welcome, Explorer Families!
+  </h2>
+
+  <div class="welcome-box">
+    <p>Welcome to <strong>Dinosaur Discovery!</strong> This pack is designed for two age groups — look for the icons:</p>
+    <br>
+    <p>🦶 <strong>Footprint</strong> = Ages 3–4 &nbsp;&nbsp;&nbsp; 🥚 <strong>Egg</strong> = Ages 4–5</p>
+    <br>
+    <p>Activities build <strong>fine motor skills</strong>, <strong>counting</strong>, <strong>matching</strong>, and <strong>early letter recognition</strong>, all through dino-powered fun! Some pages are great for both ages too.</p>
+    <br>
+    <p>Grab some crayons and let's dig in! 🦕</p>
+  </div>
+
+  <div class="section-tag">Icon Guide</div>
+  <div class="icon-legend">
+    <div class="legend-item">
+      <img src="images/footprint.jpg" alt="footprint">
+      <div class="legend-text">Ages 3–4</div>
+    </div>
+    <div class="legend-item">
+      <img src="images/egg.jpg" alt="egg">
+      <div class="legend-text">Ages 4–5</div>
+    </div>
+    <div class="legend-item">
+      <div style="display:flex;gap:2mm;">
+        <img src="images/footprint.jpg" alt="footprint" style="width:10mm;height:10mm;object-fit:contain;">
+        <img src="images/egg.jpg" alt="egg" style="width:10mm;height:10mm;object-fit:contain;">
+      </div>
+      <div class="legend-text">Both Ages</div>
+    </div>
+  </div>
+
+  <div class="welcome-dino">
+    <img src="images/brachiosaurus-waving.jpg" alt="Dino waving">
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 3 — COUNT THE DINO EGGS (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 3</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section A — Counting</div>
+  <div class="on-inst">Count the Dino Eggs!</div>
+  <div class="ibox"><b>Parent:</b> Count the eggs in each dinosaur nest and circle the matching number.</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:5mm;">How many eggs are in the nest? Circle the number!</p>
+
+  <div class="nest-row">
+    <!-- Nest 1: 2 eggs -->
+    <div class="nest-col">
+      <div class="nest-bowl">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+      </div>
+      <div class="num-row">
+        <div class="num-circ">1</div>
+        <div class="num-circ">2</div>
+        <div class="num-circ">3</div>
+        <div class="num-circ">4</div>
+        <div class="num-circ">5</div>
+      </div>
+    </div>
+    <!-- Nest 2: 4 eggs -->
+    <div class="nest-col">
+      <div class="nest-bowl">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+      </div>
+      <div class="num-row">
+        <div class="num-circ">1</div>
+        <div class="num-circ">2</div>
+        <div class="num-circ">3</div>
+        <div class="num-circ">4</div>
+        <div class="num-circ">5</div>
+      </div>
+    </div>
+    <!-- Nest 3: 5 eggs -->
+    <div class="nest-col">
+      <div class="nest-bowl">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+        <img src="images/egg.jpg" class="egg-sm" alt="egg">
+      </div>
+      <div class="num-row">
+        <div class="num-circ">1</div>
+        <div class="num-circ">2</div>
+        <div class="num-circ">3</div>
+        <div class="num-circ">4</div>
+        <div class="num-circ">5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 4 — COUNT AND WRITE (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 4</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section A — Counting</div>
+  <div class="on-inst">Count and Write!</div>
+  <div class="ibox"><b>Parent:</b> Count the dinosaur footprints in each row, then write the number in the box.</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:6mm;">Count the footprints. Write the number!</p>
+
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly;padding:0 6mm;">
+    <!-- Row 1: 3 footprints -->
+    <div class="fp-row">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <div class="write-box"></div>
+    </div>
+    <!-- Row 2: 6 footprints -->
+    <div class="fp-row">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <div class="write-box"></div>
+    </div>
+    <!-- Row 3: 8 footprints -->
+    <div class="fp-row" style="flex-wrap:wrap;">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <div class="write-box"></div>
+    </div>
+    <!-- Row 4: 10 footprints -->
+    <div class="fp-row" style="flex-wrap:wrap;">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <img src="images/footprint.jpg" class="fp-sm" alt="fp">
+      <div class="write-box"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 5 — MATCH THE SHADOW (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 5</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section B — Matching</div>
+  <div class="on-inst">Match the Shadow!</div>
+  <div class="ibox"><b>Parent:</b> Draw a line from each dinosaur to its matching shadow.</div>
+
+  <div class="shadow-grid" style="flex:1;">
+    <div class="shadow-col">
+      <div class="shadow-col-label">Colorful Dinos</div>
+      <div class="dino-card"><img src="images/brachiosaurus-standing.jpg" alt="dino1"></div>
+      <div class="dino-card"><img src="images/baby-dino.jpg" alt="dino2"></div>
+      <div class="dino-card"><img src="images/pterodactyl.jpg" alt="dino3"></div>
+      <div class="dino-card"><img src="images/brachiosaurus-waving.jpg" alt="dino4"></div>
+    </div>
+    <!-- middle space for drawing lines -->
+    <div style="width:20mm;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;">
+      <div style="width:14mm;border-top:2px dashed var(--border);"></div>
+      <div style="width:14mm;border-top:2px dashed var(--border);"></div>
+      <div style="width:14mm;border-top:2px dashed var(--border);"></div>
+      <div style="width:14mm;border-top:2px dashed var(--border);"></div>
+    </div>
+    <div class="shadow-col">
+      <div class="shadow-col-label">Shadows</div>
+      <div class="shadow-card"><img src="images/baby-dino-shadow.jpg" alt="shadow2" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+      <div class="shadow-card"><img src="images/brachiosaurus-waving-shadow.jpg" alt="shadow4" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+      <div class="shadow-card"><img src="images/brachiosaurus-standing-shadow.jpg" alt="shadow1" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+      <div class="shadow-card"><img src="images/pterodactyl-shadow.jpg" alt="shadow3" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 6 — SORT THE DINOSAURS (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 6</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section B — Matching</div>
+  <div class="on-inst">Sort the Dinosaurs!</div>
+  <div class="ibox"><b>Parent:</b> Look at each dinosaur — does it fly, walk on land, or is it a tiny baby? Draw a line to the correct group.</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:4mm;">Sort each dino into the correct group!</p>
+
+  <div class="sort-dinos">
+    <div class="sort-dino"><img src="images/pterodactyl.jpg" alt="ptero"><span>A</span></div>
+    <div class="sort-dino"><img src="images/brachiosaurus-standing.jpg" alt="brach"><span>B</span></div>
+    <div class="sort-dino"><img src="images/baby-dino.jpg" alt="baby"><span>C</span></div>
+    <div class="sort-dino"><img src="images/brachiosaurus-waving.jpg" alt="wave"><span>D</span></div>
+    <div class="sort-dino" style="transform:scaleX(-1);"><img src="images/pterodactyl.jpg" alt="ptero2"><span style="transform:scaleX(-1);display:block;">E</span></div>
+    <div class="sort-dino"><img src="images/baby-dino.jpg" alt="baby2" style="transform:scale(0.8);"><span>F</span></div>
+  </div>
+
+  <div class="sort-cats">
+    <div class="sort-cat">
+      <div class="sort-cat-title">Flies ✈</div>
+      <div class="sort-cat-inner"></div>
+    </div>
+    <div class="sort-cat">
+      <div class="sort-cat-title">Walks 🦶</div>
+      <div class="sort-cat-inner"></div>
+    </div>
+    <div class="sort-cat">
+      <div class="sort-cat-title">Tiny Baby 🐣</div>
+      <div class="sort-cat-inner"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 7 — EASY MAZE (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 7</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section C — Mazes</div>
+  <div class="on-inst">Help Dino Find the Nest!</div>
+  <div class="ibox"><b>Parent:</b> Help the baby dinosaur find its way back to the nest. Trace the path with a crayon.</div>
+
+  <div class="maze-wrap">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2mm;padding:0 2mm;">
+        <div style="display:flex;align-items:center;gap:2mm;">
+          <img src="images/baby-dino.jpg" style="width:14mm;height:14mm;object-fit:contain;" alt="start">
+          <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--green);">START</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:2mm;">
+          <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--orange);">END</span>
+          <img src="images/egg.jpg" style="width:12mm;height:14mm;object-fit:contain;" alt="end">
+        </div>
+      </div>
+      <!-- Easy Maze: white corridors on green background, single path -->
+      <svg style="display:block;width:500px;height:400px;" viewBox="0 0 310 260" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <rect width="310" height="260" fill="#2d7a4f" rx="8"/>
+        <rect x="15" y="15" width="90" height="45" fill="white"/>
+        <rect x="90" y="15" width="40" height="110" fill="white"/>
+        <rect x="15" y="110" width="115" height="40" fill="white"/>
+        <rect x="15" y="110" width="40" height="100" fill="white"/>
+        <rect x="15" y="195" width="280" height="45" fill="white"/>
+        <rect x="255" y="15" width="40" height="225" fill="white"/>
+        <rect x="2" y="2" width="306" height="256" fill="none" stroke="#1a5e38" stroke-width="4" rx="8"/>
+        <circle cx="35" cy="37" r="12" fill="#f4c430" stroke="#c06028" stroke-width="2"/>
+        <text x="35" y="42" text-anchor="middle" font-size="11" font-family="Arial" font-weight="bold" fill="#333">S</text>
+        <circle cx="275" cy="37" r="12" fill="#c06028" stroke="#8b5e3c" stroke-width="2"/>
+        <text x="275" y="42" text-anchor="middle" font-size="11" font-family="Arial" font-weight="bold" fill="white">E</text>
+      </svg>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;gap:10mm;margin-top:4mm;flex-shrink:0;">
+    <div style="display:flex;align-items:center;gap:2mm;">
+      <img src="images/baby-dino.jpg" style="width:10mm;object-fit:contain;" alt="">
+      <span style="font-size:9pt;">= Start here</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:2mm;">
+      <img src="images/egg.jpg" style="width:9mm;object-fit:contain;" alt="">
+      <span style="font-size:9pt;">= The nest!</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 8 — HARD MAZE (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 8</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section C — Mazes</div>
+  <div class="on-inst">Dino Maze Challenge!</div>
+  <div class="ibox"><b>Parent:</b> Help the dinosaur reach the egg. Watch out — there are two false paths!</div>
+
+  <div class="maze-wrap">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2mm;padding:0 2mm;">
+        <div style="display:flex;align-items:center;gap:2mm;">
+          <img src="images/baby-dino.jpg" style="width:14mm;height:14mm;object-fit:contain;" alt="start">
+          <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--green);">START</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:2mm;">
+          <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--orange);">END</span>
+          <img src="images/egg.jpg" style="width:12mm;height:14mm;object-fit:contain;" alt="end">
+        </div>
+      </div>
+      <!-- Hard Maze: same corridors + 2 dead-end branches -->
+      <svg style="display:block;width:500px;height:400px;" viewBox="0 0 310 260" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <rect width="310" height="260" fill="#2d7a4f" rx="8"/>
+        <rect x="15" y="15" width="90" height="45" fill="white"/>
+        <rect x="90" y="15" width="40" height="110" fill="white"/>
+        <rect x="15" y="110" width="115" height="40" fill="white"/>
+        <rect x="15" y="110" width="40" height="100" fill="white"/>
+        <rect x="15" y="195" width="280" height="45" fill="white"/>
+        <rect x="255" y="15" width="40" height="225" fill="white"/>
+        <!-- Dead end 1 -->
+        <rect x="37" y="60" width="36" height="45" fill="white"/>
+        <rect x="37" y="105" width="36" height="5" fill="#2d7a4f"/>
+        <!-- Dead end 2 -->
+        <rect x="173" y="155" width="36" height="45" fill="white"/>
+        <rect x="173" y="150" width="36" height="5" fill="#2d7a4f"/>
+        <rect x="2" y="2" width="306" height="256" fill="none" stroke="#1a5e38" stroke-width="4" rx="8"/>
+        <!-- X markers on dead ends -->
+        <line x1="42" y1="65" x2="68" y2="100" stroke="#c06028" stroke-width="4" stroke-linecap="round"/>
+        <line x1="68" y1="65" x2="42" y2="100" stroke="#c06028" stroke-width="4" stroke-linecap="round"/>
+        <line x1="178" y1="160" x2="204" y2="195" stroke="#c06028" stroke-width="4" stroke-linecap="round"/>
+        <line x1="204" y1="160" x2="178" y2="195" stroke="#c06028" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="35" cy="37" r="12" fill="#f4c430" stroke="#c06028" stroke-width="2"/>
+        <text x="35" y="42" text-anchor="middle" font-size="11" font-family="Arial" font-weight="bold" fill="#333">S</text>
+        <circle cx="275" cy="37" r="12" fill="#c06028" stroke="#8b5e3c" stroke-width="2"/>
+        <text x="275" y="42" text-anchor="middle" font-size="11" font-family="Arial" font-weight="bold" fill="white">E</text>
+      </svg>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:9pt;color:var(--gray);margin-top:3mm;flex-shrink:0;">
+    <b style="color:var(--orange);">Tip:</b> Watch for the ✕ dead ends — they lead nowhere!
+  </p>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 9 — COLOR BY SHAPE (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 9</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section D — Color by Code</div>
+  <div class="on-inst">Color by Shape!</div>
+  <div class="ibox"><b>Parent:</b> Look at the key. Color each shape on the dinosaur the matching color.</div>
+
+  <div class="color-key">
+    <div class="key-item">
+      <span style="display:inline-block;width:14px;height:14px;background:#2d7a4f;border-radius:50%;border:2px solid #333;"></span>
+      Circle = <span style="color:var(--green);">Green</span>
+    </div>
+    <div class="key-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" style="display:inline-block;"><polygon points="7,1 13,13 1,13" fill="#8b5e3c" stroke="#333" stroke-width="1.5"/></svg>
+      Triangle = <span style="color:var(--brown);">Brown</span>
+    </div>
+  </div>
+
+  <div style="flex:1;display:flex;justify-content:center;align-items:center;">
+    <svg viewBox="0 0 380 310" style="display:block;width:520px;height:425px;">
+      <!-- Dino body: circles -->
+      <!-- Main body circle -->
+      <circle cx="190" cy="185" r="85" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="190" y="192" text-anchor="middle" font-size="18" fill="#aaa" font-family="Arial">●</text>
+      <!-- Neck circle -->
+      <circle cx="145" cy="115" r="42" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="145" y="122" text-anchor="middle" font-size="18" fill="#aaa" font-family="Arial">●</text>
+      <!-- Head circle -->
+      <circle cx="100" cy="60" r="35" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="100" y="67" text-anchor="middle" font-size="18" fill="#aaa" font-family="Arial">●</text>
+      <!-- Tail triangle (right side) -->
+      <polygon points="275,185 340,155 340,215" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="318" y="193" text-anchor="middle" font-size="10" fill="#aaa" font-family="Arial">▲</text>
+      <!-- Front leg (triangle, pointing down) -->
+      <polygon points="155,265 130,305 180,305" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="155" y="297" text-anchor="middle" font-size="10" fill="#aaa" font-family="Arial">▲</text>
+      <!-- Back leg (triangle, pointing down) -->
+      <polygon points="220,265 195,305 245,305" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="220" y="297" text-anchor="middle" font-size="10" fill="#aaa" font-family="Arial">▲</text>
+      <!-- Back spikes (triangles) -->
+      <polygon points="210,105 222,75 234,105" fill="white" stroke="#333" stroke-width="3.5"/>
+      <polygon points="232,98 244,68 256,98" fill="white" stroke="#333" stroke-width="3.5"/>
+      <polygon points="253,102 265,72 277,102" fill="white" stroke="#333" stroke-width="3.5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 10 — COLOR BY NUMBER (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 10</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section D — Color by Code</div>
+  <div class="on-inst">Color by Number!</div>
+  <div class="ibox"><b>Parent:</b> Use the color key to find out which number matches which color, then color the dinosaur.</div>
+
+  <div class="color-key">
+    <div class="key-item"><span class="key-swatch" style="background:#2d7a4f;"></span>&nbsp;1 = <span style="color:var(--green);">Green</span></div>
+    <div class="key-item"><span class="key-swatch" style="background:#8b5e3c;"></span>&nbsp;2 = <span style="color:var(--brown);">Brown</span></div>
+    <div class="key-item"><span class="key-swatch" style="background:#c06028;"></span>&nbsp;3 = <span style="color:var(--orange);">Orange</span></div>
+  </div>
+
+  <div style="flex:1;display:flex;justify-content:center;align-items:center;">
+    <svg viewBox="0 0 380 310" style="display:block;width:520px;height:425px;">
+      <!-- Zone 1: Body — GREEN (label "1") -->
+      <ellipse cx="200" cy="185" rx="90" ry="75" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="200" y="190" text-anchor="middle" font-size="22" fill="#2d7a4f" font-weight="bold" font-family="Arial">1</text>
+      <!-- Zone 3: Head + Neck — ORANGE (label "3") -->
+      <ellipse cx="110" cy="105" rx="50" ry="65" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="110" y="112" text-anchor="middle" font-size="22" fill="#c06028" font-weight="bold" font-family="Arial">3</text>
+      <!-- Zone 2: Legs — BROWN (label "2") -->
+      <rect x="130" y="255" width="35" height="48" rx="8" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="147" y="284" text-anchor="middle" font-size="18" fill="#8b5e3c" font-weight="bold" font-family="Arial">2</text>
+      <rect x="200" y="255" width="35" height="48" rx="8" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="217" y="284" text-anchor="middle" font-size="18" fill="#8b5e3c" font-weight="bold" font-family="Arial">2</text>
+      <rect x="255" y="255" width="35" height="40" rx="8" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="272" y="280" text-anchor="middle" font-size="18" fill="#8b5e3c" font-weight="bold" font-family="Arial">2</text>
+      <!-- Tail — zone 1 -->
+      <polygon points="285,175 345,155 345,210" fill="white" stroke="#333" stroke-width="4"/>
+      <text x="320" y="190" text-anchor="middle" font-size="18" fill="#2d7a4f" font-weight="bold" font-family="Arial">1</text>
+      <!-- Back spikes — zone 3 -->
+      <polygon points="220,112 233,82 246,112" fill="white" stroke="#333" stroke-width="3"/>
+      <text x="233" y="107" text-anchor="middle" font-size="11" fill="#c06028" font-weight="bold" font-family="Arial">3</text>
+      <polygon points="245,108 258,78 271,108" fill="white" stroke="#333" stroke-width="3"/>
+      <text x="258" y="103" text-anchor="middle" font-size="11" fill="#c06028" font-weight="bold" font-family="Arial">3</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 11 — SPOT 3 DIFFERENCES (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 11</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section E — Spot the Difference</div>
+  <div class="on-inst">Spot 3 Differences!</div>
+  <div class="ibox"><b>Parent:</b> Look closely at the two pictures. Can you circle 3 things that are different?</div>
+
+  <div style="flex:1;display:flex;flex-direction:column;gap:4mm;">
+    <!-- Two panels stacked vertically for bigger view -->
+    <div style="display:flex;gap:5mm;flex:1;">
+      <!-- Panel A: Original -->
+      <div style="flex:1;position:relative;border:3px solid var(--green);border-radius:10px;overflow:hidden;min-height:70mm;">
+        <img src="images/landscape.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;" alt="bg">
+        <img src="images/brachiosaurus-standing.jpg" style="position:absolute;bottom:5%;right:5%;height:60%;object-fit:contain;" alt="dino">
+        <img src="images/egg.jpg" style="position:absolute;bottom:8%;left:8%;height:18%;object-fit:contain;" alt="egg">
+        <img src="images/pterodactyl.jpg" style="position:absolute;top:8%;left:15%;height:25%;object-fit:contain;" alt="pterodactyl">
+        <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.9);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:9pt;color:var(--green);">Picture A</div>
+      </div>
+      <!-- Panel B: 3 differences -->
+      <div style="flex:1;position:relative;border:3px solid var(--orange);border-radius:10px;overflow:hidden;min-height:70mm;">
+        <img src="images/landscape.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;filter:hue-rotate(25deg);" alt="bg">
+        <!-- Diff 1: Dino is SMALLER -->
+        <img src="images/brachiosaurus-standing.jpg" style="position:absolute;bottom:5%;right:5%;height:38%;object-fit:contain;" alt="dino">
+        <!-- Diff 2: No egg -->
+        <!-- Diff 3: No pterodactyl -->
+        <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.9);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:9pt;color:var(--orange);">Picture B</div>
+      </div>
+    </div>
+    <!-- Difference circles to mark found differences -->
+    <div style="display:flex;justify-content:center;gap:6mm;align-items:center;flex-shrink:0;">
+      <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--gray);">I found:</span>
+      <div class="diff-circ"></div>
+      <div class="diff-circ"></div>
+      <div class="diff-circ"></div>
+      <span style="font-size:9pt;color:var(--gray);">differences</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 12 — SPOT 5 DIFFERENCES (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 12</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section E — Spot the Difference</div>
+  <div class="on-inst">Spot 5 Differences!</div>
+  <div class="ibox"><b>Parent:</b> Compare the two dino scenes. Circle all 5 differences you can find!</div>
+
+  <div style="flex:1;display:flex;flex-direction:column;gap:4mm;">
+    <div style="display:flex;gap:5mm;flex:1;">
+      <!-- Panel A -->
+      <div style="flex:1;position:relative;border:3px solid var(--green);border-radius:10px;overflow:hidden;min-height:75mm;">
+        <img src="images/landscape.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.75;" alt="bg">
+        <img src="images/brachiosaurus-standing.jpg" style="position:absolute;bottom:3%;right:3%;height:65%;object-fit:contain;" alt="dino">
+        <img src="images/baby-dino.jpg" style="position:absolute;bottom:3%;left:5%;height:32%;object-fit:contain;" alt="baby">
+        <img src="images/egg.jpg" style="position:absolute;bottom:10%;left:30%;height:16%;object-fit:contain;" alt="egg">
+        <img src="images/pterodactyl.jpg" style="position:absolute;top:5%;left:10%;height:22%;object-fit:contain;" alt="ptero">
+        <img src="images/footprint.jpg" style="position:absolute;top:10%;right:8%;height:14%;object-fit:contain;" alt="fp">
+        <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.9);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:9pt;color:var(--green);">Picture A</div>
+      </div>
+      <!-- Panel B: 5 differences -->
+      <div style="flex:1;position:relative;border:3px solid var(--orange);border-radius:10px;overflow:hidden;min-height:75mm;">
+        <img src="images/landscape.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.75;filter:hue-rotate(35deg);" alt="bg">
+        <!-- Diff 1: Big dino flipped -->
+        <img src="images/brachiosaurus-standing.jpg" style="position:absolute;bottom:3%;right:3%;height:65%;object-fit:contain;transform:scaleX(-1);" alt="dino">
+        <!-- Diff 2: Baby dino bigger -->
+        <img src="images/baby-dino.jpg" style="position:absolute;bottom:3%;left:5%;height:45%;object-fit:contain;" alt="baby">
+        <!-- Diff 3: No egg -->
+        <!-- Diff 4: No pterodactyl -->
+        <!-- Diff 5: No footprint -->
+        <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.9);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:9pt;color:var(--orange);">Picture B</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:5mm;align-items:center;flex-shrink:0;">
+      <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--gray);">I found:</span>
+      <div class="diff-circ"></div><div class="diff-circ"></div><div class="diff-circ"></div>
+      <div class="diff-circ"></div><div class="diff-circ"></div>
+      <span style="font-size:9pt;color:var(--gray);">differences</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 13 — TRACE THE DINO (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 13</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section F — Tracing</div>
+  <div class="on-inst">Trace the Dino!</div>
+  <div class="ibox"><b>Parent:</b> Trace the outline of the dinosaur with your favorite color crayon.</div>
+
+  <div class="trace-wrap">
+    <div style="position:relative;width:480px;height:340px;">
+      <!-- Ghost image guide -->
+      <img src="images/brachiosaurus-standing.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0.18;" alt="guide">
+      <!-- Dotted SVG outline (simplified brachiosaurus silhouette) -->
+      <svg viewBox="0 0 480 340" width="480" height="340" style="position:absolute;inset:0;">
+        <!-- Simplified brachiosaurus outline as a closed dotted path, scaled to 480x340 -->
+        <path d="
+          M 340,310
+          C 285,305 215,300 180,292
+          C 145,285 138,265 138,245
+          C 138,220 152,200 166,180
+          C 178,158 170,115  145,80
+          C 123,51  95,32  98,55
+          C 103,79  118,94  112,115
+          C 107,137  122,156 152,170
+          C 177,184 180,215 180,245
+          C 180,270 198,295 230,305
+          C 265,315 320,318 345,312
+          C 388,303 438,285 453,257
+          C 467,228 458,193 448,184
+          C 436,174 443,147 455,127
+          C 463,111 448,98 430,112
+          C 412,127 400,150 388,175
+          C 376,200 370,233 376,256
+          C 382,278 395,300 375,312
+          Z
+        " fill="none" stroke="#bbb" stroke-width="9" stroke-dasharray="18,10" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Legs -->
+        <path d="M 215,303 L 212,335 M 250,308 L 247,335 M 308,305 L 305,335 M 345,300 L 342,335"
+              fill="none" stroke="#bbb" stroke-width="9" stroke-dasharray="12,7" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-family:'Fredoka One',cursive;font-size:13pt;color:var(--orange);margin-top:3mm;flex-shrink:0;">
+    Follow the dotted line with your crayon! 🖍
+  </p>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 14 — D IS FOR DINO (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 14</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section F — Tracing</div>
+  <div class="on-inst">D is for Dino!</div>
+  <div class="ibox"><b>Parent:</b> Trace the capital and lowercase letter D, then trace the word DINO.</div>
+
+  <div class="letter-section">
+    <!-- Big letters D d -->
+    <div style="display:flex;align-items:center;gap:10mm;background:var(--green2);border:2px solid var(--green);border-radius:14px;padding:6mm 14mm;">
+      <svg viewBox="0 0 90 110" width="90" height="110">
+        <text x="45" y="90" text-anchor="middle"
+              font-size="100" font-family="'Fredoka One', Arial, cursive"
+              fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="12,6">D</text>
+      </svg>
+      <svg viewBox="0 0 80 110" width="80" height="110">
+        <text x="40" y="90" text-anchor="middle"
+              font-size="100" font-family="'Fredoka One', Arial, cursive"
+              fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="12,6">d</text>
+      </svg>
+      <img src="images/baby-dino.jpg" style="height:28mm;object-fit:contain;" alt="dino">
+    </div>
+
+    <p style="font-family:'Fredoka One',cursive;font-size:13pt;color:var(--orange);text-align:center;">Now trace the word!</p>
+
+    <!-- Word DINO in boxes -->
+    <div style="display:flex;gap:4mm;">
+      <div class="letter-cell">
+        <svg viewBox="0 0 70 80" width="70" height="80">
+          <text x="35" y="65" text-anchor="middle" font-size="72"
+                font-family="'Fredoka One', Arial, cursive"
+                fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="10,5">D</text>
+        </svg>
+      </div>
+      <div class="letter-cell">
+        <svg viewBox="0 0 70 80" width="70" height="80">
+          <text x="35" y="65" text-anchor="middle" font-size="72"
+                font-family="'Fredoka One', Arial, cursive"
+                fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="10,5">I</text>
+        </svg>
+      </div>
+      <div class="letter-cell">
+        <svg viewBox="0 0 70 80" width="70" height="80">
+          <text x="35" y="65" text-anchor="middle" font-size="72"
+                font-family="'Fredoka One', Arial, cursive"
+                fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="10,5">N</text>
+        </svg>
+      </div>
+      <div class="letter-cell">
+        <svg viewBox="0 0 70 80" width="70" height="80">
+          <text x="35" y="65" text-anchor="middle" font-size="72"
+                font-family="'Fredoka One', Arial, cursive"
+                fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="10,5">O</text>
+        </svg>
+      </div>
+    </div>
+
+    <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--green);text-align:center;">
+      Great job! D is for DINO! 🦕
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 15 — FREE COLORING (BOTH) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Both ages">
+      <img src="images/egg.jpg" class="tier-img" alt="Both ages">
+      <span class="ph-num">Page 15</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section G — Bonus!</div>
+  <div class="on-inst">Free Coloring Page!</div>
+  <div class="ibox"><b>Parent:</b> No instructions — just a fun, big dinosaur scene for free coloring!</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:3mm;">Color me however you like! 🎨</p>
+
+  <div class="color-scene" style="flex:1;">
+    <img src="images/landscape.jpg" class="color-scene-bg" alt="bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <img src="images/brachiosaurus-waving.jpg" class="color-scene-dino"
+         style="position:absolute;bottom:5%;right:5%;height:65%;object-fit:contain;filter:grayscale(1) contrast(1.5) brightness(1.1);" alt="dino">
+    <img src="images/pterodactyl.jpg" class="color-scene-dino"
+         style="position:absolute;top:8%;left:10%;height:28%;object-fit:contain;filter:grayscale(1) contrast(1.5) brightness(1.1);" alt="ptero">
+    <img src="images/baby-dino.jpg" class="color-scene-dino"
+         style="position:absolute;bottom:5%;left:5%;height:30%;object-fit:contain;filter:grayscale(1) contrast(1.5) brightness(1.1);" alt="baby">
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 16 — BIG OR SMALL? (3–4) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Ages 3-4">
+      <span class="ph-num">Page 16</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section G — Bonus!</div>
+  <div class="on-inst">Big or Small?</div>
+  <div class="ibox"><b>Parent:</b> Look at each pair of dinosaurs. Circle the bigger one.</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:4mm;">Which dino is bigger? Circle it!</p>
+
+  <div class="bigsmall-grid">
+    <!-- Pair 1: big brachiosaurus vs small brachiosaurus -->
+    <div class="bs-pair">
+      <div class="bs-inner">
+        <div class="bs-dino"><img src="images/brachiosaurus-standing.jpg" style="height:40mm;" alt="big"></div>
+        <div class="bs-dino"><img src="images/brachiosaurus-standing.jpg" style="height:22mm;" alt="small"></div>
+      </div>
+      <div style="font-size:8.5pt;color:var(--gray);font-weight:700;text-align:center;">Pair 1</div>
+    </div>
+    <!-- Pair 2: big baby dino vs small baby dino -->
+    <div class="bs-pair">
+      <div class="bs-inner">
+        <div class="bs-dino"><img src="images/baby-dino.jpg" style="height:25mm;" alt="small"></div>
+        <div class="bs-dino"><img src="images/baby-dino.jpg" style="height:42mm;" alt="big"></div>
+      </div>
+      <div style="font-size:8.5pt;color:var(--gray);font-weight:700;text-align:center;">Pair 2</div>
+    </div>
+    <!-- Pair 3: big pterodactyl vs small pterodactyl -->
+    <div class="bs-pair">
+      <div class="bs-inner">
+        <div class="bs-dino"><img src="images/pterodactyl.jpg" style="height:38mm;" alt="big"></div>
+        <div class="bs-dino"><img src="images/pterodactyl.jpg" style="height:20mm;" alt="small"></div>
+      </div>
+      <div style="font-size:8.5pt;color:var(--gray);font-weight:700;text-align:center;">Pair 3</div>
+    </div>
+    <!-- Pair 4: big brachiosaurus vs small baby dino -->
+    <div class="bs-pair">
+      <div class="bs-inner">
+        <div class="bs-dino"><img src="images/brachiosaurus-waving.jpg" style="height:40mm;" alt="big"></div>
+        <div class="bs-dino"><img src="images/baby-dino.jpg" style="height:24mm;" alt="small"></div>
+      </div>
+      <div style="font-size:8.5pt;color:var(--gray);font-weight:700;text-align:center;">Pair 4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 17 — WHAT COMES NEXT? (4–5) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/egg.jpg" class="tier-img" alt="Ages 4-5">
+      <span class="ph-num">Page 17</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section G — Bonus!</div>
+  <div class="on-inst">What Comes Next?</div>
+  <div class="ibox"><b>Parent:</b> Look at the pattern of dinosaurs. Draw or point to the one that comes next.</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:4mm;">Complete the pattern! Draw what comes next. 🦕</p>
+
+  <div class="pattern-rows">
+    <!-- Row 1: baby, ptero, baby, ptero, ? -->
+    <div class="pattern-row">
+      <div class="pat-cell"><img src="images/baby-dino.jpg" alt="A"></div>
+      <div class="pat-cell"><img src="images/pterodactyl.jpg" alt="B"></div>
+      <div class="pat-cell"><img src="images/baby-dino.jpg" alt="A"></div>
+      <div class="pat-cell"><img src="images/pterodactyl.jpg" alt="B"></div>
+      <div class="pat-cell"><img src="images/baby-dino.jpg" alt="A"></div>
+      <div class="pat-answer">?</div>
+    </div>
+    <!-- Row 2: standing, waving, standing, waving, ? -->
+    <div class="pattern-row">
+      <div class="pat-cell"><img src="images/brachiosaurus-standing.jpg" alt="A"></div>
+      <div class="pat-cell"><img src="images/brachiosaurus-waving.jpg" alt="B"></div>
+      <div class="pat-cell"><img src="images/brachiosaurus-standing.jpg" alt="A"></div>
+      <div class="pat-cell"><img src="images/brachiosaurus-waving.jpg" alt="B"></div>
+      <div class="pat-cell"><img src="images/brachiosaurus-standing.jpg" alt="A"></div>
+      <div class="pat-answer">?</div>
+    </div>
+    <!-- Row 3: egg, footprint, egg, footprint, ? -->
+    <div class="pattern-row">
+      <div class="pat-cell"><img src="images/egg.jpg" alt="A"></div>
+      <div class="pat-cell"><img src="images/footprint.jpg" alt="B"></div>
+      <div class="pat-cell"><img src="images/egg.jpg" alt="A"></div>
+      <div class="pat-cell"><img src="images/footprint.jpg" alt="B"></div>
+      <div class="pat-cell"><img src="images/egg.jpg" alt="A"></div>
+      <div class="pat-answer">?</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 18 — MY DINO NAME (BOTH) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Both">
+      <img src="images/egg.jpg" class="tier-img" alt="Both">
+      <span class="ph-num">Page 18</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section G — Bonus!</div>
+  <div class="on-inst">My Dino Name!</div>
+  <div class="ibox"><b>Parent:</b> Write your child's name on the dinosaur egg, then let them decorate it!</div>
+
+  <div class="egg-page">
+    <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);">This egg belongs to:</p>
+    <div class="egg-name-wrap">
+      <img src="images/egg.jpg" style="height:80mm;object-fit:contain;display:block;" alt="egg">
+      <div class="name-line">________________________</div>
+    </div>
+    <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--green);">Now decorate your dino egg! 🎨</p>
+    <p style="font-size:9.5pt;color:var(--gray);text-align:center;">Draw patterns, stripes, polka dots — make it yours!</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 19 — DINO SEEK & FIND (BOTH) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Both">
+      <img src="images/egg.jpg" class="tier-img" alt="Both">
+      <span class="ph-num">Page 19</span>
+    </div>
+  </div>
+
+  <div class="section-tag">Section G — Bonus!</div>
+  <div class="on-inst">Find the Hidden Dinos!</div>
+  <div class="ibox"><b>Parent:</b> Find and circle the 4 small dinosaurs hidden in the big scene.</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:3mm;">Can you find 4 hidden dinosaurs? 🔍</p>
+
+  <div class="seek-scene" style="flex:1;">
+    <img src="images/landscape.jpg" class="seek-bg" alt="bg">
+    <!-- Hidden dino 1: baby dino, bottom-left behind bush -->
+    <img src="images/baby-dino.jpg" class="seek-dino"
+         style="bottom:8%;left:5%;height:14%;filter:brightness(0) saturate(0);opacity:0.65;" alt="hidden1">
+    <!-- Hidden dino 2: pterodactyl, top-right near clouds -->
+    <img src="images/pterodactyl.jpg" class="seek-dino"
+         style="top:6%;right:8%;height:12%;filter:brightness(0) saturate(0);opacity:0.65;" alt="hidden2">
+    <!-- Hidden dino 3: brachiosaurus behind tree, mid-left -->
+    <img src="images/brachiosaurus-standing.jpg" class="seek-dino"
+         style="bottom:15%;left:22%;height:16%;filter:brightness(0) saturate(0);opacity:0.65;" alt="hidden3">
+    <!-- Hidden dino 4: baby dino, mid-right near path -->
+    <img src="images/baby-dino.jpg" class="seek-dino"
+         style="bottom:10%;right:25%;height:11%;filter:brightness(0) saturate(0);opacity:0.6;" alt="hidden4">
+  </div>
+
+  <div style="display:flex;justify-content:center;gap:6mm;margin-top:3mm;flex-shrink:0;">
+    <span style="font-family:'Fredoka One',cursive;font-size:10pt;color:var(--gray);">Found:</span>
+    <div class="diff-circ" style="border-color:var(--green);"></div>
+    <div class="diff-circ" style="border-color:var(--green);"></div>
+    <div class="diff-circ" style="border-color:var(--green);"></div>
+    <div class="diff-circ" style="border-color:var(--green);"></div>
+    <span style="font-size:9pt;color:var(--gray);">out of 4</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PAGE 20 — CERTIFICATE (BOTH) ═══════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-title">Dinosaur Discovery</span>
+    <div class="ph-right">
+      <img src="images/footprint.jpg" class="tier-img" alt="Both">
+      <img src="images/egg.jpg" class="tier-img" alt="Both">
+      <span class="ph-num">Page 20</span>
+    </div>
+  </div>
+
+  <!-- Certificate: flat layout without complex flex nesting -->
+  <div style="border:6px solid #2d7a4f;border-radius:16px;padding:8mm;background:#f6fef9;margin-top:2mm;">
+    <div style="border:3px dashed #f4c430;border-radius:12px;padding:6mm;text-align:center;">
+
+      <div style="font-size:24pt;margin-bottom:3mm;">&#11088; &#11088; &#11088;</div>
+
+      <div style="font-family:'Fredoka One',cursive;font-size:22pt;color:#2d7a4f;margin-bottom:2mm;">
+        Certificate of Achievement
+      </div>
+      <div style="font-family:'Fredoka One',cursive;font-size:12pt;color:#c06028;margin-bottom:5mm;">
+        Dinosaur Discovery Activity Pack
+      </div>
+
+      <div style="text-align:center;margin-bottom:5mm;">
+        <img src="images/brachiosaurus-waving.jpg" style="height:42mm;object-fit:contain;" alt="dino waving">
+      </div>
+
+      <div style="font-size:12pt;color:#555;margin-bottom:2mm;">This certificate is awarded to:</div>
+      <div style="width:80mm;border-bottom:3px solid #8b5e3c;height:10mm;margin:0 auto 5mm;"></div>
+
+      <div style="font-size:11pt;color:#333;line-height:1.8;margin-bottom:5mm;">
+        for completing the<br>
+        <strong style="color:#2d7a4f;font-family:'Fredoka One',cursive;font-size:14pt;">Dinosaur Discovery Activity Pack</strong><br>
+        and becoming a <strong style="color:#c06028;">Dinosaur Discovery Expert!</strong>
+      </div>
+
+      <div style="display:flex;justify-content:space-around;">
+        <div style="text-align:center;">
+          <div style="width:55mm;border-bottom:2px solid #888;margin-bottom:1mm;height:9mm;"></div>
+          <div style="font-size:8pt;color:#666;">Parent / Guardian Signature</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:38mm;border-bottom:2px solid #888;margin-bottom:1mm;height:9mm;"></div>
+          <div style="font-size:8pt;color:#666;">Date</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
