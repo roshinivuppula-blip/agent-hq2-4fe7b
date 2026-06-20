@@ -928,10 +928,10 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
         <img src="images/baby-dino.jpg" style="position:absolute;bottom:5mm;left:5mm;height:46mm;object-fit:contain;" alt="baby">
         <!-- DIFF 3: Egg is BIGGER and MOVED higher (was bottom:5mm center, now top:28mm left) -->
         <img src="images/egg.jpg" style="position:absolute;top:28mm;left:8mm;height:22mm;object-fit:contain;" alt="egg">
-        <!-- DIFF 4: Pterodactyl BIGGER (40mm vs 22mm) and on FAR RIGHT (was far left) -->
-        <img src="images/pterodactyl.jpg" style="position:absolute;top:5mm;right:4mm;height:40mm;object-fit:contain;" alt="ptero">
-        <!-- DIFF 5: Footprint BIGGER (28mm vs 16mm) — moved to top-LEFT to avoid ptero overlap -->
-        <img src="images/footprint.jpg" style="position:absolute;top:6mm;left:8mm;height:28mm;object-fit:contain;" alt="fp">
+        <!-- DIFF 4: Pterodactyl BIGGER and on FAR RIGHT — explicit width keeps image box from bleeding left -->
+        <img src="images/pterodactyl.jpg" style="position:absolute;top:5mm;right:4mm;width:44mm;height:25mm;object-fit:contain;" alt="ptero">
+        <!-- DIFF 5: Footprint BIGGER — explicit width keeps image box from overlapping ptero -->
+        <img src="images/footprint.jpg" style="position:absolute;top:6mm;left:8mm;width:32mm;height:18mm;object-fit:contain;" alt="fp">
         <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.92);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:10pt;color:var(--orange);">Picture B</div>
       </div>
     </div>
@@ -1066,11 +1066,11 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
   <div class="color-scene" style="flex:1;">
     <img src="images/landscape.jpg" class="color-scene-bg" alt="bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.12;">
     <img src="images/hero-dino-outline.jpg" class="color-scene-dino"
-         style="position:absolute;bottom:5%;right:5%;height:65%;object-fit:contain;" alt="dino">
+         style="position:absolute;bottom:8mm;right:8mm;width:110mm;height:62mm;object-fit:contain;" alt="dino">
     <img src="images/pterodactyl-outline.jpg" class="color-scene-dino"
-         style="position:absolute;top:8%;left:10%;height:28%;object-fit:contain;" alt="ptero">
+         style="position:absolute;top:8mm;left:8mm;width:80mm;height:45mm;object-fit:contain;" alt="ptero">
     <img src="images/baby-dino-outline.jpg" class="color-scene-dino"
-         style="position:absolute;bottom:5%;left:5%;height:30%;object-fit:contain;" alt="baby">
+         style="position:absolute;bottom:8mm;left:8mm;width:52mm;height:29mm;object-fit:contain;" alt="baby">
   </div>
 </div>
 
