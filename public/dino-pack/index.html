@@ -195,11 +195,12 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
 .sort-dino { display:flex; flex-direction:column; align-items:center; gap:1mm; }
 .sort-dino img { width:20mm; height:20mm; object-fit:contain; }
 .sort-dino span { font-size:8pt; font-weight:700; color:var(--gray); }
-.sort-cats { display:flex; justify-content:space-around; gap:4mm; }
+.sort-cats { display:flex; justify-content:space-around; gap:4mm; width:100%; overflow:hidden; box-sizing:border-box; }
 .sort-cat {
   flex:1; min-height:35mm; border:3px solid var(--green);
   border-radius:10px; padding:3mm;
   display:flex; flex-direction:column; align-items:center; gap:2mm;
+  box-sizing:border-box; overflow:hidden;
 }
 .sort-cat-title {
   font-family:'Fredoka One',cursive; font-size:12pt; color:var(--green);
@@ -566,13 +567,8 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
       <div class="dino-card"><img src="images/pterodactyl.jpg" alt="dino3"></div>
       <div class="dino-card"><img src="images/brachiosaurus-waving.jpg" alt="dino4"></div>
     </div>
-    <!-- middle space for drawing lines -->
-    <div style="width:24mm;display:flex;flex-direction:column;justify-content:space-evenly;align-items:stretch;padding:0 1mm;">
-      <div style="display:flex;align-items:center;gap:1mm;"><div style="flex:1;border-top:4px dashed #999;"></div><span style="font-size:14pt;color:#999;line-height:1;">&#9654;</span></div>
-      <div style="display:flex;align-items:center;gap:1mm;"><div style="flex:1;border-top:4px dashed #999;"></div><span style="font-size:14pt;color:#999;line-height:1;">&#9654;</span></div>
-      <div style="display:flex;align-items:center;gap:1mm;"><div style="flex:1;border-top:4px dashed #999;"></div><span style="font-size:14pt;color:#999;line-height:1;">&#9654;</span></div>
-      <div style="display:flex;align-items:center;gap:1mm;"><div style="flex:1;border-top:4px dashed #999;"></div><span style="font-size:14pt;color:#999;line-height:1;">&#9654;</span></div>
-    </div>
+    <!-- middle space for child to draw their own connecting lines -->
+    <div style="width:24mm;"></div>
     <div class="shadow-col">
       <div class="shadow-col-label">Shadows</div>
       <div class="shadow-card"><img src="images/baby-dino-shadow.jpg" alt="shadow2" style="max-width:100%;max-height:100%;object-fit:contain;"></div>
@@ -863,8 +859,8 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
         <img src="images/landscape.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;" alt="bg">
         <!-- Brachiosaurus — large, right side -->
         <img src="images/brachiosaurus-standing.jpg" style="position:absolute;bottom:6mm;right:4mm;height:62mm;object-fit:contain;" alt="dino">
-        <!-- Egg — bottom left -->
-        <img src="images/egg.jpg" style="position:absolute;bottom:6mm;left:8mm;height:16mm;object-fit:contain;" alt="egg">
+        <!-- Egg — middle left, clear of dino legs -->
+        <img src="images/egg.jpg" style="position:absolute;top:38mm;left:8mm;height:16mm;object-fit:contain;" alt="egg">
         <!-- Pterodactyl — top left -->
         <img src="images/pterodactyl.jpg" style="position:absolute;top:6mm;left:12mm;height:22mm;object-fit:contain;" alt="ptero">
         <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.92);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:10pt;color:var(--green);">Picture A</div>
@@ -934,8 +930,8 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
         <img src="images/egg.jpg" style="position:absolute;top:28mm;left:8mm;height:22mm;object-fit:contain;" alt="egg">
         <!-- DIFF 4: Pterodactyl BIGGER (40mm vs 22mm) and on FAR RIGHT (was far left) -->
         <img src="images/pterodactyl.jpg" style="position:absolute;top:5mm;right:4mm;height:40mm;object-fit:contain;" alt="ptero">
-        <!-- DIFF 5: Footprint BIGGER (28mm vs 16mm) -->
-        <img src="images/footprint.jpg" style="position:absolute;top:6mm;right:8mm;height:28mm;object-fit:contain;" alt="fp">
+        <!-- DIFF 5: Footprint BIGGER (28mm vs 16mm) — moved to top-LEFT to avoid ptero overlap -->
+        <img src="images/footprint.jpg" style="position:absolute;top:6mm;left:8mm;height:28mm;object-fit:contain;" alt="fp">
         <div style="position:absolute;top:3mm;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.92);border-radius:20px;padding:1mm 5mm;font-family:'Fredoka One',cursive;font-size:10pt;color:var(--orange);">Picture B</div>
       </div>
     </div>
@@ -994,19 +990,21 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
   <div class="ibox"><b>Parent:</b> Trace the capital and lowercase letter D, then trace the word DINO.</div>
 
   <div class="letter-section">
-    <!-- Big letters D d -->
-    <div style="display:flex;align-items:center;gap:10mm;background:var(--green2);border:2px solid var(--green);border-radius:14px;padding:6mm 14mm;">
-      <svg viewBox="0 0 90 110" width="90" height="110">
-        <text x="45" y="90" text-anchor="middle"
-              font-size="100" font-family="'Fredoka One', Arial, cursive"
-              fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="12,6">D</text>
-      </svg>
-      <svg viewBox="0 0 80 110" width="80" height="110">
-        <text x="40" y="90" text-anchor="middle"
-              font-size="100" font-family="'Fredoka One', Arial, cursive"
-              fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="12,6">d</text>
-      </svg>
-      <img src="images/baby-dino.jpg" style="height:28mm;object-fit:contain;" alt="dino">
+    <!-- Big letters D d — wrapper centers the box without stretching it full-width -->
+    <div style="display:flex;justify-content:center;width:100%;">
+      <div style="display:inline-flex;align-items:center;gap:10mm;background:var(--green2);border:2px solid var(--green);border-radius:14px;padding:6mm 14mm;">
+        <svg viewBox="0 0 90 110" width="90" height="110">
+          <text x="45" y="90" text-anchor="middle"
+                font-size="100" font-family="'Fredoka One', Arial, cursive"
+                fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="12,6">D</text>
+        </svg>
+        <svg viewBox="0 0 80 110" width="80" height="110">
+          <text x="40" y="90" text-anchor="middle"
+                font-size="100" font-family="'Fredoka One', Arial, cursive"
+                fill="none" stroke="#bbb" stroke-width="4" stroke-dasharray="12,6">d</text>
+        </svg>
+        <img src="images/baby-dino.jpg" style="height:28mm;width:50mm;object-fit:contain;" alt="dino">
+      </div>
     </div>
 
     <p style="font-family:'Fredoka One',cursive;font-size:13pt;color:var(--orange);text-align:center;">Now trace the word!</p>
@@ -1066,13 +1064,13 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
   <p style="font-family:'Fredoka One',cursive;font-size:12pt;color:var(--orange);text-align:center;margin-bottom:3mm;">Color me however you like! 🎨</p>
 
   <div class="color-scene" style="flex:1;">
-    <img src="images/landscape.jpg" class="color-scene-bg" alt="bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-    <img src="images/brachiosaurus-waving.jpg" class="color-scene-dino"
-         style="position:absolute;bottom:5%;right:5%;height:65%;object-fit:contain;filter:grayscale(1) contrast(1.5) brightness(1.1);" alt="dino">
-    <img src="images/pterodactyl.jpg" class="color-scene-dino"
-         style="position:absolute;top:8%;left:10%;height:28%;object-fit:contain;filter:grayscale(1) contrast(1.5) brightness(1.1);" alt="ptero">
-    <img src="images/baby-dino.jpg" class="color-scene-dino"
-         style="position:absolute;bottom:5%;left:5%;height:30%;object-fit:contain;filter:grayscale(1) contrast(1.5) brightness(1.1);" alt="baby">
+    <img src="images/landscape.jpg" class="color-scene-bg" alt="bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.12;">
+    <img src="images/hero-dino-outline.jpg" class="color-scene-dino"
+         style="position:absolute;bottom:5%;right:5%;height:65%;object-fit:contain;" alt="dino">
+    <img src="images/pterodactyl-outline.jpg" class="color-scene-dino"
+         style="position:absolute;top:8%;left:10%;height:28%;object-fit:contain;" alt="ptero">
+    <img src="images/baby-dino-outline.jpg" class="color-scene-dino"
+         style="position:absolute;bottom:5%;left:5%;height:30%;object-fit:contain;" alt="baby">
   </div>
 </div>
 
@@ -1095,33 +1093,33 @@ body { background: white; font-family: 'Nunito', Arial, sans-serif; }
   <div style="flex:1;display:flex;flex-wrap:wrap;gap:4mm;padding-top:1mm;align-content:flex-start;">
     <!-- Pair 1: big brachiosaurus vs small brachiosaurus -->
     <div style="width:47%;height:95mm;display:flex;flex-direction:column;align-items:center;background:var(--green2);border:2px solid var(--green);border-radius:12px;padding:4mm;box-sizing:border-box;">
-      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;overflow:hidden;">
-        <img src="images/brachiosaurus-standing.jpg" style="width:42mm;height:78mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="big">
-        <img src="images/brachiosaurus-standing.jpg" style="width:20mm;height:36mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="small">
+      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;">
+        <img src="images/brachiosaurus-standing.jpg" style="width:46mm;height:26mm;object-fit:contain;flex-shrink:0;" alt="big">
+        <img src="images/brachiosaurus-standing.jpg" style="width:24mm;height:13mm;object-fit:contain;flex-shrink:0;" alt="small">
       </div>
       <div style="font-size:9pt;color:var(--gray);font-weight:700;margin-top:2mm;flex-shrink:0;">Pair 1</div>
     </div>
     <!-- Pair 2: big baby dino vs small baby dino -->
     <div style="width:47%;height:95mm;display:flex;flex-direction:column;align-items:center;background:var(--olight);border:2px solid var(--orange);border-radius:12px;padding:4mm;box-sizing:border-box;">
-      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;overflow:hidden;">
-        <img src="images/baby-dino.jpg" style="width:20mm;height:36mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="small">
-        <img src="images/baby-dino.jpg" style="width:42mm;height:78mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="big">
+      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;">
+        <img src="images/baby-dino.jpg" style="width:24mm;height:13mm;object-fit:contain;flex-shrink:0;" alt="small">
+        <img src="images/baby-dino.jpg" style="width:46mm;height:26mm;object-fit:contain;flex-shrink:0;" alt="big">
       </div>
       <div style="font-size:9pt;color:var(--gray);font-weight:700;margin-top:2mm;flex-shrink:0;">Pair 2</div>
     </div>
     <!-- Pair 3: big pterodactyl vs small pterodactyl -->
     <div style="width:47%;height:95mm;display:flex;flex-direction:column;align-items:center;background:var(--olight);border:2px solid var(--orange);border-radius:12px;padding:4mm;box-sizing:border-box;">
-      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;overflow:hidden;">
-        <img src="images/pterodactyl.jpg" style="width:44mm;height:78mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="big">
-        <img src="images/pterodactyl.jpg" style="width:20mm;height:36mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="small">
+      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;">
+        <img src="images/pterodactyl.jpg" style="width:46mm;height:26mm;object-fit:contain;flex-shrink:0;" alt="big">
+        <img src="images/pterodactyl.jpg" style="width:24mm;height:13mm;object-fit:contain;flex-shrink:0;" alt="small">
       </div>
       <div style="font-size:9pt;color:var(--gray);font-weight:700;margin-top:2mm;flex-shrink:0;">Pair 3</div>
     </div>
     <!-- Pair 4: big brachiosaurus waving vs small baby dino -->
     <div style="width:47%;height:95mm;display:flex;flex-direction:column;align-items:center;background:var(--green2);border:2px solid var(--green);border-radius:12px;padding:4mm;box-sizing:border-box;">
-      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;overflow:hidden;">
-        <img src="images/brachiosaurus-waving.jpg" style="width:42mm;height:78mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="big">
-        <img src="images/baby-dino.jpg" style="width:20mm;height:36mm;object-fit:cover;object-position:center;flex-shrink:0;" alt="small">
+      <div style="display:flex;gap:6mm;align-items:flex-end;justify-content:center;flex:1;width:100%;">
+        <img src="images/brachiosaurus-waving.jpg" style="width:46mm;height:26mm;object-fit:contain;flex-shrink:0;" alt="big">
+        <img src="images/baby-dino.jpg" style="width:24mm;height:13mm;object-fit:contain;flex-shrink:0;" alt="small">
       </div>
       <div style="font-size:9pt;color:var(--gray);font-weight:700;margin-top:2mm;flex-shrink:0;">Pair 4</div>
     </div>
